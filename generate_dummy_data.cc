@@ -23,15 +23,15 @@
 
 // Flags defining the size of data to generate for the client and server, bounds
 // on the associated values, and where the write the outputs.
-DEFINE_int64(server_data_size, 100,
+DEFINE_int64(server_data_size, 10,
              "Number of dummy identifiers in server database.");
 DEFINE_int64(
-    client_data_size, 100,
+    client_data_size, 10,
     "Number of dummy identifiers and associated values in client database.");
-DEFINE_int64(intersection_size, 50,
+DEFINE_int64(intersection_size, 2,
              "Number of items in the intersection. Must be less than the "
              "server and client data sizes.");
-DEFINE_int64(max_associated_value, 100,
+DEFINE_int64(max_associated_value, 5,
              "Dummy associated values for the client will be between 0 and "
              "this. Must be nonnegative.");
 DEFINE_string(server_data_file, "",
@@ -43,6 +43,7 @@ int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, true);
 
+  // Create dummy data
   auto maybe_dummy_data = private_join_and_compute::GenerateRandomDatabases(
       FLAGS_server_data_size, FLAGS_client_data_size, FLAGS_intersection_size,
       FLAGS_max_associated_value);

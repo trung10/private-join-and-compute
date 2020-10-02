@@ -40,6 +40,11 @@ std::string OpenSSLErrorString();
 //
 // This class is not thread-safe, so each thread needs to have a unique Context
 // initialized.
+
+// BN_CTX bien moi truong tinh toan so nguyen lon (So nguyen to)
+// EVP_MD_CTX su dung cho viec hash
+// Context class de cung cap cac bien moi truong, dung chung trong project
+
 class Context {
  public:
   // Deletes a BN_CTX.

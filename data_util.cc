@@ -36,6 +36,13 @@ static const size_t kAlphaNumericSize = 62;
 
 // Creates a string of the specified length consistin of random letters and
 // numbers.
+
+
+// todo tao ra birthday problem
+// Moi id se lay 32 ky tu Top hop 32 cua 62 = 4.508837172E+17 (c)
+// Tinh P(A') = c/c * (c - 1)/c * (c - 2)/c * (c -3)/c ..... = (1/c)^x * (c).(c - 1)...(c - x - 1)
+// P(A) = 1 - P(A')
+
 std::string GetRandomAlphaNumericString(size_t length) {
   std::string output;
   for (size_t i = 0; i < length; i++) {
@@ -146,6 +153,8 @@ auto GenerateRandomDatabases(int64_t server_data_size, int64_t client_data_size,
     return InvalidArgumentError(
         "GenerateRandomDatabases: Sizes cannot be negative.");
   }
+
+  // Check
   if (intersection_size > server_data_size ||
       intersection_size > client_data_size) {
     return InvalidArgumentError(
